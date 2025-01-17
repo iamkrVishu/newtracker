@@ -23,6 +23,9 @@ mongoose
 // Routes
 app.use("/api/auth", authRoutes); // Authentication routes
 
+app.get("/",(req,res)=>{
+  res.json("hello");
+})
 // Start the server
 const PORT = process.env.PORT || 5000;  // Use PORT from .env or default to 5000
 app.listen(PORT, () => {
