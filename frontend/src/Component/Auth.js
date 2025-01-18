@@ -11,14 +11,15 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Initialize navigate
 
+  const BACKEND_URL = "https://your-vercel-app-name.vercel.app/api/auth"; // Replace with your Vercel app URL
+
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/auth/signin", { email, password })
+      .post(`${BACKEND_URL}/signin`, { email, password })
       .then((response) => {
         alert(`Logged in successfully!`);
         window.location.replace("https://habit-tracker-lac.vercel.app/"); // Use replace to force a redirect
-        //navigate("/auth"); // Ensure lowercase path
       })
       .catch((err) => {
         setErrorMessage("Invalid credentials. Please try again.");
@@ -29,11 +30,10 @@ const Auth = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/auth/signup", { name, email, password })
+      .post(`${BACKEND_URL}/signup`, { name, email, password })
       .then((response) => {
         alert(`Account created successfully!`);
         window.location.replace("https://habit-tracker-lac.vercel.app/"); // Redirect to external link
-        //navigate("/auth"); // Ensure lowercase path
       })
       .catch((err) => {
         setErrorMessage("Error creating account. Please try again.");
