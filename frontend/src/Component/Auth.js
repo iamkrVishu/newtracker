@@ -11,7 +11,7 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Initialize navigate
 
-  const BACKEND_URL = "https://your-vercel-app-name.vercel.app/api/auth"; // Replace with your Vercel app URL
+  const BACKEND_URL = "https://newtracker-backend.onrender.com/api/auth"; // Update with the actual backend URL
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const Auth = () => {
       .post(`${BACKEND_URL}/signin`, { email, password })
       .then((response) => {
         alert(`Logged in successfully!`);
-        window.location.replace("https://habit-tracker-lac.vercel.app/"); // Use replace to force a redirect
+        window.location.replace("https://newtracker-zeta.vercel.app/"); // Redirect to frontend app
       })
       .catch((err) => {
         setErrorMessage("Invalid credentials. Please try again.");
@@ -33,7 +33,7 @@ const Auth = () => {
       .post(`${BACKEND_URL}/signup`, { name, email, password })
       .then((response) => {
         alert(`Account created successfully!`);
-        window.location.replace("https://habit-tracker-lac.vercel.app/"); // Redirect to external link
+        window.location.replace("https://newtracker-zeta.vercel.app/"); // Redirect to frontend app
       })
       .catch((err) => {
         setErrorMessage("Error creating account. Please try again.");
