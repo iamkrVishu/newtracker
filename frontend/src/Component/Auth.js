@@ -19,12 +19,14 @@ const Auth = () => {
       .post(`${BACKEND_URL}/signin`, { email, password })
       .then((response) => {
         alert(`Logged in successfully!`);
-        window.location.replace("https://habit-tracker-lac.vercel.app/"); // Use replace to force a redirect
+        localStorage.setItem("token", response.data.token); // Save token in localStorage
+        navigate("/dashboard"); // Use navigate for internal routing
       })
       .catch((err) => {
-        setErrorMessage("Invalid credentials. Please try again.");
-        console.error("Login error:", err);
-      });
+        const error = err.response?.data?.message || "Something went wrong.";
+        setErrorMessage(error);
+        console.error("Login/Signup error:", err);
+      });      
   };
 
   const handleSignup = (e) => {
@@ -33,12 +35,13 @@ const Auth = () => {
       .post(`${BACKEND_URL}/signup`, { name, email, password })
       .then((response) => {
         alert(`Account created successfully!`);
-        window.location.replace("https://habit-tracker-lac.vercel.app/"); // Redirect to external link
+        navigate("/dashboard"); // Redirect to dashboard after successful signup
       })
       .catch((err) => {
-        setErrorMessage("Error creating account. Please try again.");
-        console.error("Signup error:", err);
-      });
+        const error = err.response?.data?.message || "Something went wrong.";
+        setErrorMessage(error);
+        console.error("Login/Signup error:", err);
+      });      
   };
 
   return (
