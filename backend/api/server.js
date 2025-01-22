@@ -13,7 +13,7 @@ app.use(cors({
 
 // MongoDB connection using the direct URL
 mongoose
-  .connect("mongodb+srv://kumarvishvajeetsingh:Vishu896989@cluster0.ajsta.mongodb.net/habit?retryWrites=true&w=majority", {
+  .connect("mongodb+srv://kumar:VX8XXXX@cluster0.ajsta.mongodb.net/habit?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
